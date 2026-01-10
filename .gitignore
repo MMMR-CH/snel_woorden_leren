@@ -54,6 +54,7 @@ ExportedObj/
 *.vscode/
 *AppData/
 *mono_crash_*.json
+*.keystore
 
 # Unity3D generated meta files
 *.pidb.meta
