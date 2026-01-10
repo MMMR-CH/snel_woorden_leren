@@ -1,7 +1,10 @@
+using SWL.Core.Domain.Player;
+
 namespace SWL.App.Ports
 {
     public interface IPlayerSave
     {
-        void Save();
+        PlayerProfile Load();
+        void Save(PlayerProfile profile);
     }
 }
