@@ -6,13 +6,13 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/LoadingScene.unity
+    path: Assets/SWL/Presentation/Scenes/LoadingScene.unity
     guid: feb516a1637c3fe4abb2e6a22c637a86
   - enabled: 1
-    path: Assets/Scenes/MainMenu.unity
+    path: Assets/SWL/Presentation/Scenes/MainMenu.unity
     guid: 33850402e3cdbf043a527284b39998c3
   - enabled: 1
-    path: Assets/Scenes/Fill_In_The_Blank.unity
+    path: Assets/SWL/Presentation/Scenes/Fill_In_The_Blank.unity
     guid: 7e214a5c4dfedb94da825553dcdd6556
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: c496193b45ada67498122df67a9ac97a, type: 2}
