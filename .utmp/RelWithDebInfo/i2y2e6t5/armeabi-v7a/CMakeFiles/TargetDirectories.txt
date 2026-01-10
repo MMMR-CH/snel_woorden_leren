@@ -1,0 +1,5 @@
+/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/.utmp/RelWithDebInfo/i2y2e6t5/armeabi-v7a/CMakeFiles/edit_cache.dir
+/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/.utmp/RelWithDebInfo/i2y2e6t5/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/.utmp/RelWithDebInfo/i2y2e6t5/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/.utmp/RelWithDebInfo/i2y2e6t5/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/.utmp/RelWithDebInfo/i2y2e6t5/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir

@@ -1,0 +1,5 @@
+C:/Users/cakar/OneDrive/Documents/GitHub/Snel Woorden Leren/.utmp/Debug/2a3lu6uo/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/cakar/OneDrive/Documents/GitHub/Snel Woorden Leren/.utmp/Debug/2a3lu6uo/armeabi-v7a/CMakeFiles/rebuild_cache.dir
+C:/Users/cakar/OneDrive/Documents/GitHub/Snel Woorden Leren/.utmp/Debug/2a3lu6uo/armeabi-v7a/FramePacing/CMakeFiles/swappywrapper.dir
+C:/Users/cakar/OneDrive/Documents/GitHub/Snel Woorden Leren/.utmp/Debug/2a3lu6uo/armeabi-v7a/FramePacing/CMakeFiles/edit_cache.dir
+C:/Users/cakar/OneDrive/Documents/GitHub/Snel Woorden Leren/.utmp/Debug/2a3lu6uo/armeabi-v7a/FramePacing/CMakeFiles/rebuild_cache.dir

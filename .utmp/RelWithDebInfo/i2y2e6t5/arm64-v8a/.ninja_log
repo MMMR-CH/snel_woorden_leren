@@ -1,0 +1,5 @@
+# ninja log v5
+179	304	1752572866280323065	/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/i2y2e6t5/obj/arm64-v8a/libswappywrapper.so	8066358681c9b037
+0	178	1752572866171670362	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	f799dac3bd254b
+0	356	1752577398921337253	FramePacing/CMakeFiles/swappywrapper.dir/UnitySwappyWrapper.cpp.o	f799dac3bd254b
+357	577	1752577399123702561	/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/i2y2e6t5/obj/arm64-v8a/libswappywrapper.so	8066358681c9b037

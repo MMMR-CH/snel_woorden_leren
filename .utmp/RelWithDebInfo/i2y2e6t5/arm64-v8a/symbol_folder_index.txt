@@ -1,0 +1,1 @@
+/Users/muhammercakar/Documents/GitHub/Snel-Woorden-Leren/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/build/intermediates/cxx/RelWithDebInfo/i2y2e6t5/obj/arm64-v8a
