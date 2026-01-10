@@ -3,7 +3,7 @@ using System;
 
 namespace SWL
 {
-    public class BetekenisLevelMainBus
+    public class FITBMainBus
     {
         // LevelManager
         public Func<WoordDataType> CurrentWoordDataType { get; set; } = null;

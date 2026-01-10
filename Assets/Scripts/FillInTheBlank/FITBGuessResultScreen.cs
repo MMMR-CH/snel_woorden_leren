@@ -14,7 +14,7 @@ namespace SWL
     /// </remarks>
 
 
-    public class BetekenisLevelGuessResultScreen : MonoBehaviour
+    public class FITBGuessResultScreen : MonoBehaviour
     {
         [SerializeField] Image correctResultImage;
         [SerializeField] Image incorrectResultImage;

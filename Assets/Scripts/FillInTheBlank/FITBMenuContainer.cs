@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace SWL
 {
-    public class BetekenisLevelMenuContainer : PageContainer
+    public class FITBMenuContainer : PageContainer
     {
         [field: SerializeField] public Button PlayButton_A2 { get; private set; }
         [field: SerializeField] public Button PlayButton_B1 { get; private set; }
@@ -23,7 +23,7 @@ namespace SWL
             GameManager.Instance.MainBus.SetWoordData.Invoke(WoordDataType.A2);
 
             // load game scene
-            LevelManager.LoadScene(LevelManager.LevelType.BetekenisLevel);
+            LevelManager.LoadScene(LevelManager.LevelType.Fill_In_The_Blank);
         }
 
         void OnPlayButtonClickB1()
@@ -32,7 +32,7 @@ namespace SWL
             GameManager.Instance.MainBus.SetWoordData.Invoke(WoordDataType.B1);
 
             // load game scene
-            LevelManager.LoadScene(LevelManager.LevelType.BetekenisLevel);
+            LevelManager.LoadScene(LevelManager.LevelType.Fill_In_The_Blank);
         }
     }
 }

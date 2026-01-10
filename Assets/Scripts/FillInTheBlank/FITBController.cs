@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SWL
 {
-    public class BetekenisLevelController : MonoBehaviour
+    public class FITBController : MonoBehaviour
     {
         public int TotalWordsPlayed
         {
@@ -12,14 +12,14 @@ namespace SWL
             set => PlayerPrefs.SetInt($"TotalWordsPlayed_Betekenis_{BetekenisLevelMainBus.CurrentWoordDataType()}", value);
         }
         // Level bus
-        BetekenisLevelMainBus betekenisLevelMainBus = null;
-        BetekenisLevelMainBus BetekenisLevelMainBus
+        FITBMainBus betekenisLevelMainBus = null;
+        FITBMainBus BetekenisLevelMainBus
         {
             get
             {
                 if (betekenisLevelMainBus == null)
                 {
-                    betekenisLevelMainBus = new BetekenisLevelMainBus();
+                    betekenisLevelMainBus = new FITBMainBus();
                     betekenisLevelMainBus.CurrentWoordDataType = GameManager.Instance.MainBus.CurrentWoordDataType;
                     betekenisLevelMainBus.CompleteWord = CompleteWord;
                     betekenisLevelMainBus.IncorrectAnswer = IncorrectAnswer;
@@ -132,7 +132,7 @@ namespace SWL
 
         // sub modules
         [Space, Header("SUB MODULES")]
-        [SerializeField] BetekenisLevelCanvas betekenisLevelCanvas;
+        [SerializeField] FITBCanvas fitbCanvas;
 
 
         int currentWordIndex = 0;
@@ -158,14 +158,14 @@ namespace SWL
             }
 
             // init with EN culture info
-            betekenisLevelCanvas.Init(BetekenisLevelMainBus, currentLetterSet);
+            fitbCanvas.Init(BetekenisLevelMainBus, currentLetterSet);
 
             BetekenisLevelMainBus.LevelInitialized = true;
         }
 
         void StartGameplay()
         {
-            betekenisLevelCanvas.InitLevel(BetekenisLevelMainBus.GetCurrentWord());
+            fitbCanvas.InitLevel(BetekenisLevelMainBus.GetCurrentWord());
 
             //update the progress bar
             BetekenisLevelMainBus.UpdateProgressBar?.Invoke(TotalWordsPlayed, GameManager.Instance.MainBus.WoordDatas.Count, true);

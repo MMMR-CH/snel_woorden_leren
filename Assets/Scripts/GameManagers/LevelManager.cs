@@ -11,13 +11,17 @@ namespace SWL
         public enum LevelType
         {
             MainMenu,
-            BetekenisLevel,
+            Match_Words_Images,
+            Match_Words_Sentences,
+            Choose_Words_Image_Text,
+            Fill_In_The_Blank,
+            Crossword_Puzzle,
         }
 
         static Dictionary<LevelType, string> LevelNames = new Dictionary<LevelType, string>
         {
             { LevelType.MainMenu, "MainMenu" },
-            { LevelType.BetekenisLevel, "BetekenisLevel" },
+            { LevelType.Fill_In_The_Blank, "Fill_In_The_Blank" },
         };
         
        

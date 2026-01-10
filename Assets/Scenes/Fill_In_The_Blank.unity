@@ -342,6 +342,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -701,7 +702,7 @@ GameObject:
   - component: {fileID: 557852624}
   - component: {fileID: 557852623}
   m_Layer: 5
-  m_Name: BetekenisLevelCanvas
+  m_Name: FITBCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -796,13 +797,13 @@ MonoBehaviour:
       Value: {fileID: 8772113060731490237, guid: 7282c13346dba3349ac0678c44c0e5a6, type: 3}
   keyboardContainer: {fileID: 383814101}
   answerFrame: {fileID: 1454750985}
-  betekenisLevelDescription: {fileID: 1924036948}
+  fitbDescription: {fileID: 1924036948}
   questionFrame: {fileID: 1507081739}
   previousButton: {fileID: 1942534990}
   nextButton: {fileID: 1731274197}
   homeButton: {fileID: 199642540}
-  betekenisLevelGuessResultScreen: {fileID: 520392003}
-  betekenisLevelBoosterController: {fileID: 995205795}
+  fitbGuessResultScreen: {fileID: 520392003}
+  fitbBoosterController: {fileID: 995205795}
   progressBar: {fileID: 53210930}
 --- !u!224 &557852627
 RectTransform:
@@ -1378,6 +1379,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1787,6 +1789,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 10
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1914,7 +1917,7 @@ GameObject:
   - component: {fileID: 1359658253}
   - component: {fileID: 1359658252}
   m_Layer: 0
-  m_Name: BetekenisLevelController
+  m_Name: FITBController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1932,7 +1935,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cccf95e95f0b54fb3969fc8426c4c6a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  betekenisLevelCanvas: {fileID: 557852626}
+  fitbCanvas: {fileID: 0}
 --- !u!4 &1359658253
 Transform:
   m_ObjectHideFlags: 0
@@ -2520,6 +2523,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3472,6 +3476,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

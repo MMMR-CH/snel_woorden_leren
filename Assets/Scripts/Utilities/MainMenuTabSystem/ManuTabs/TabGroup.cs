@@ -11,11 +11,10 @@ namespace MC.Modules.Tabsystem
         public enum Type
         {
             Home = 0,
-            Betekenis = 1,
+            League = 1,
             Settings = 2,
             Shop = 3,
-            Invullen = 4,
-            Kruiswoordraadsel = 5
+            Words = 4
         }
 
         readonly Dictionary<Type, string> localizedBubbleWarningTexts;

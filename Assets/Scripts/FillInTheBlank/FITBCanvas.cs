@@ -20,27 +20,27 @@ namespace SWL
     /// This class is responsible for managing the Betekenis level UI elements.
     /// </remarks>
     [RequireComponent(typeof(Canvas))]
-    public class BetekenisLevelCanvas : MonoBehaviour
+    public class FITBCanvas : MonoBehaviour
     {
         [SerializeField] SerializableDictionary<KeyboardLanguageEnum, KeyboardManager> KeyboardPrefabs;
         [SerializeField] RectTransform keyboardContainer;
         [SerializeField] AnswerFrame answerFrame;
-        [SerializeField] BetekenisLevelDescription betekenisLevelDescription;
+        [SerializeField] FITBDescription fitbDescription;
         [SerializeField] private QuestionFrame questionFrame;
         [SerializeField] Button previousButton;
         [SerializeField] Button nextButton;
         [SerializeField] Button homeButton;
-        [SerializeField] BetekenisLevelGuessResultScreen betekenisLevelGuessResultScreen;
-        [SerializeField] BetekenisLevelBoosterController betekenisLevelBoosterController;
+        [SerializeField] FITBGuessResultScreen fitbGuessResultScreen;
+        [SerializeField] FITBBoosterController fitbBoosterController;
         [SerializeField] ProgressBar progressBar;
 
         KeyboardManager _keyboardManagerInstance;
-        BetekenisLevelMainBus _levelBus = null;
+        FITBMainBus _levelBus = null;
         LetterSet _currentLetterSet;
         WoordData _currentWoordData;
         KeyboardButtonController _guessButton;
 
-        public void Init(BetekenisLevelMainBus levelBus, LetterSet letterSet)
+        public void Init(FITBMainBus levelBus, LetterSet letterSet)
         {
             SWL_Debug.Log($"BetekenisLevelCanvas ==> Init");
 
@@ -84,11 +84,11 @@ namespace SWL
             });
 
             // description text
-            betekenisLevelDescription.Init(_levelBus);
+            fitbDescription.Init(_levelBus);
             _levelBus.ToggleEnglishMeaning = ToggleMeaning;
 
             // init booster frame
-            betekenisLevelBoosterController.Init(_levelBus);
+            fitbBoosterController.Init(_levelBus);
 
             // progress bar
             _levelBus.UpdateProgressBar = progressBar.UpdateBar;
@@ -153,8 +153,8 @@ namespace SWL
             if (woord.RevealedSampleSentenceCount > 2) _levelBus.AddSampleSentence(3, woord.VOORBEELD_ZIN_3);
 
             // init result screen
-            if (woord.IsWoordCompleted) betekenisLevelGuessResultScreen.ShowCorrectResult();
-            else betekenisLevelGuessResultScreen.ResetResultScreen();
+            if (woord.IsWoordCompleted) fitbGuessResultScreen.ShowCorrectResult();
+            else fitbGuessResultScreen.ResetResultScreen();
         }
 
         void OnKeyboardButtonClicked(KeyboardButtonController controller)
@@ -200,7 +200,7 @@ namespace SWL
                         SWL_Debug.Log("BetekenisLevelCanvas ==> Guess is correct!");
                         _levelBus.CompleteWord(_currentWoordData);
                         _levelBus.ShowNextButton(true);
-                        betekenisLevelGuessResultScreen.ShowCorrectResult(skip: true, null);
+                        fitbGuessResultScreen.ShowCorrectResult(skip: true, null);
                         InitDescriptionText(_currentWoordData);
                         answerFrame.SetLocked(true); // Lock the answer frame after a correct guess
                         
@@ -222,7 +222,7 @@ namespace SWL
                     else
                     {
                         SWL_Debug.Log("BetekenisLevelCanvas ==> Guess is incorrect.");
-                        betekenisLevelGuessResultScreen.ShowIncorrectResult();
+                        fitbGuessResultScreen.ShowIncorrectResult();
                         _levelBus.ClearCurrentAnswer();
                     }
                     break;
@@ -273,32 +273,32 @@ namespace SWL
             if (letter == Letter._1)
             {
                 // Use first booster
-                betekenisLevelBoosterController.OnHintBoosterPressed();
+                fitbBoosterController.OnHintBoosterPressed();
                 return;
             }
             if (letter == Letter._2)
             {
                 // Use second booster
-                betekenisLevelBoosterController.OnAnswerBoosterPressed();
+                fitbBoosterController.OnAnswerBoosterPressed();
                 return;
             }
             if (letter == Letter._3)
             {
                 // Use third booster
-                betekenisLevelBoosterController.OnSampleBoosterPressed();
+                fitbBoosterController.OnSampleBoosterPressed();
                 return;
             }
             if (letter == Letter._4)
             {
                 // Toggle English meaning
-                betekenisLevelBoosterController.OnEnglishButtonPressed();
+                fitbBoosterController.OnEnglishButtonPressed();
                 return;
             }
             if (letter == Letter._0 || letter == Letter.NewLine)
             {
                 // if the answer is correct, move to next word. otherwise, check the answer
                 if (_currentWoordData.IsWoordCompleted)
-                    betekenisLevelBoosterController.OnNextButtonPressed();
+                    fitbBoosterController.OnNextButtonPressed();
                 else
                 {
                     // Check answer or move to next word

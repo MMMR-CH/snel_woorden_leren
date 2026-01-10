@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 namespace SWL
 {
-    public class BetekenisLevelBoosterController : MonoBehaviour
+    public class FITBBoosterController : MonoBehaviour
     {
         [SerializeField] RectTransform boosterPanel;
         [SerializeField] Button hintBoosterButton;
@@ -15,9 +15,9 @@ namespace SWL
         [SerializeField] Button englishButton;
         [SerializeField] Button nextButton;
 
-        BetekenisLevelMainBus _levelMainBus;
+        FITBMainBus _levelMainBus;
 
-        public void Init(BetekenisLevelMainBus levelMainBus)
+        public void Init(FITBMainBus levelMainBus)
         {
             _levelMainBus = levelMainBus;
             _levelMainBus.ShowNextButton = ShowNextButton;

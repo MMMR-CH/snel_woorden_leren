@@ -3,20 +3,20 @@ using UnityEngine;
 
 namespace SWL
 {
-    public class BetekenisLevelDescription : MonoBehaviour
+    public class FITBDescription : MonoBehaviour
     {
         [SerializeField] TextMeshProUGUI descriptionText;
 
         float tempSize = 1.0f;
 
 
-        public void Init(BetekenisLevelMainBus betekenisLevelMainBus)
+        public void Init(FITBMainBus fitbMainBus)
         {
             tempSize = descriptionText.fontSize;
-            betekenisLevelMainBus.AddDescriptionText = AddDescriptionText;
-            betekenisLevelMainBus.ClearDescriptionText = ClearDescriptionText;
-            betekenisLevelMainBus.AddSampleSentence = AddSampleSentence;
-            betekenisLevelMainBus.ClearDescriptionText();
+            fitbMainBus.AddDescriptionText = AddDescriptionText;
+            fitbMainBus.ClearDescriptionText = ClearDescriptionText;
+            fitbMainBus.AddSampleSentence = AddSampleSentence;
+            fitbMainBus.ClearDescriptionText();
         }
 
         public void AddDescriptionText(string text, float sizePercentage = 1f)

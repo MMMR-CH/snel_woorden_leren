@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SnelWoordenLeren.Levels
 {
-    public class Level_mwasb_1_manager : MonoBehaviour
+    public class Level_MWI_1_manager : MonoBehaviour
     {
         [SerializeField] LevelController _levelController;
 
