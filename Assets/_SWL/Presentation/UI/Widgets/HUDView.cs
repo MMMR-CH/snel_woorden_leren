@@ -11,6 +11,7 @@ namespace SWL.Presentation.UI.Widgets
 
         [Header("Texts")]
         [SerializeField] private TMP_Text lifeText;
+        [SerializeField] private TMP_Text lifeTimerText;
         [SerializeField] private TMP_Text coinText;
         [SerializeField] private TMP_Text gemText;
 
@@ -23,6 +24,12 @@ namespace SWL.Presentation.UI.Widgets
 
         public void SetLife(int life) => lifeText.text = life.ToString();
         public void SetCoins(int coins) => coinText.text = coins.ToString();
-        public void SetGems(int gems) => gemText.text = gems.ToString();
+        public void SetGems(int gems) => gemText.text = gems.ToString();        
+
+        public void SetLifeTimer(string text)
+        {
+            if (lifeTimerText != null)
+                lifeTimerText.text = text;
+        }
     }
 }

@@ -21,12 +21,21 @@ namespace SWL.Composition
             _profileStore = new PlayerProfileStore(playerSave);  // App
 
             // Presentation wiring
-            hudPresenter.Construct(_profileStore);               
+            hudPresenter.Construct(_profileStore);
 
             // time + usecase
             ITimeService time = new DeviceTimeService();
             var tickLife = new TickLifeRegenUseCase(_profileStore);
-            lifeRegenTicker.Construct(tickLife, time);
+            lifeRegenTicker.Construct(_profileStore, tickLife, time);
+        }
+
+        private void OnApplicationPause(bool pause)
+        {
+            if (pause) _profileStore.Save();
+        }
+        private void OnApplicationQuit()
+        {
+            _profileStore.Save();
         }
     }
 }

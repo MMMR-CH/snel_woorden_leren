@@ -32,6 +32,7 @@ namespace SWL.Infrastructure.Save
 
         private PlayerProfile CreateNewProfile()
         {
+            Debug.Log("Creating new player profile");
             var now = GetUnixTime();
 
             return new PlayerProfile
