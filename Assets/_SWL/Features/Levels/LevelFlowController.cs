@@ -1,7 +1,9 @@
+using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using SWL.App;
-using SWL.App.UseCases;
+using SWL.App.Ports;
+using SWL.App.UseCases.Levels;
 using SWL.Core.Domain.Levels;
 
 namespace SWL.Features.Levels
@@ -10,21 +12,21 @@ namespace SWL.Features.Levels
     {
         [SerializeField] private string mainMenuSceneKey = "MainMenu";
 
-        private ConsumeLifeUseCase _consumeLife;
-        private GrantLevelRewardUseCase _grantReward;
         private PlayerProfileStore _store;
+        private ResolveLevelResultUseCase _resolve;
+        private ITimeService _time;
 
         private LevelSpec _pendingSpec;
         private ILevelRunner _activeRunner;
 
         public void Construct(
             PlayerProfileStore store,
-            ConsumeLifeUseCase consumeLife,
-            GrantLevelRewardUseCase grantReward)
+            ResolveLevelResultUseCase resolve,
+            ITimeService time)
         {
             _store = store;
-            _consumeLife = consumeLife;
-            _grantReward = grantReward;
+            _resolve = resolve;
+            _time = time;
         }
 
         private void Awake()
@@ -34,13 +36,13 @@ namespace SWL.Features.Levels
 
         public void StartLevel(LevelSpec spec)
         {
-            if (_consumeLife == null || _grantReward == null || _store == null)
+            if (_resolve == null || _store == null)
             {
                 Debug.LogError("LevelFlowController not constructed.");
                 return;
             }
 
-            if (!_consumeLife.CanStart())
+            if (_store.Profile.Life <= 0)
             {
                 Debug.Log("No lives left -> show OutOfLives UI (later).");
                 return;
@@ -62,7 +64,7 @@ namespace SWL.Features.Levels
         {
             SceneManager.sceneLoaded -= OnSceneLoaded;
 
-            var entry = Object.FindFirstObjectByType<LevelSceneEntry>();
+            var entry = UnityEngine.Object.FindFirstObjectByType<LevelSceneEntry>();
             if (entry == null)
             {
                 Debug.LogError("No LevelSceneEntry found in loaded level scene.");
@@ -84,19 +86,8 @@ namespace SWL.Features.Levels
             if (_activeRunner != null)
                 _activeRunner.Finished -= OnLevelFinished;
 
-            if (!result.Success)
-            {
-                // ✅ Life only on FAIL
-                _consumeLife.ConsumeOnFail();
-            }
-            else
-            {
-                _grantReward.Grant(result.CoinsReward, result.GemsReward);
-
-                // simple progression, for now
-                _store.Profile.CurrentLevelIndex++;
-                _store.NotifyChanged();
-            }
+            var now = _time != null ? _time.UtcNowUnixSeconds : DateTimeOffset.UtcNow.ToUnixTimeSeconds();
+            _resolve.Apply(_pendingSpec, result, now);
 
             if (_activeRunner != null)
                 _activeRunner.Dispose();

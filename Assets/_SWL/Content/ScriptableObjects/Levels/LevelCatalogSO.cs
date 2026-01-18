@@ -10,22 +10,58 @@ using UnityEngine;
 namespace SWL.Content.Levels
 {
     [CreateAssetMenu(menuName = "SWL/Levels/Level Catalog", fileName = "LevelCatalog")]
-    public sealed class LevelCatalogSO : ScriptableObject
+    public sealed class LevelCatalogSO : ScriptableObject, ILevelCatalog
     {
         public List<LevelSpec> Levels = new();
 
-        public bool TryGet(int levelId, out LevelSpec spec)
+        public int Count => Levels?.Count ?? 0;
+
+        public IEnumerable<LevelSpec> All => Levels;
+
+        public bool TryGetById(int levelId, out LevelSpec spec)
         {
-            for (int i = 0; i < Levels.Count; i++)
+            if (Levels != null)
             {
-                if (Levels[i].LevelId == levelId)
+                for (int i = 0; i < Levels.Count; i++)
                 {
-                    spec = Levels[i];
-                    return true;
+                    if (Levels[i].LevelId == levelId)
+                    {
+                        spec = Levels[i];
+                        return true;
+                    }
                 }
             }
             spec = default;
             return false;
+        }
+
+        public bool TryGetByIndex(int index, out LevelSpec spec)
+        {
+            if (Levels != null && index >= 0 && index < Levels.Count)
+            {
+                spec = Levels[index];
+                return true;
+            }
+            spec = default;
+            return false;
+        }
+
+        public int IndexOf(int levelId)
+        {
+            if (Levels == null) return -1;
+            for (int i = 0; i < Levels.Count; i++)
+            {
+                if (Levels[i].LevelId == levelId)
+                    return i;
+            }
+            return -1;
+        }
+
+        public bool TryGetNextAfter(int levelId, out LevelSpec next)
+        {
+            var idx = IndexOf(levelId);
+            if (idx < 0) { next = default; return false; }
+            return TryGetByIndex(idx + 1, out next);
         }
 
         static string SceneName(LevelType key) => key switch
@@ -35,40 +71,46 @@ namespace SWL.Content.Levels
             LevelType.Choose_Words_Image_Text => "Level_ChooseWordsImageText",
             LevelType.Crossword_Puzzle => "Level_Crossword",
             LevelType.Fill_In_The_Blank => "Level_FillInTheBlank",
-            LevelType.Unique => "Please set scene name maunally",
+            LevelType.Unique => null, // must be set manually
             _ => throw new ArgumentOutOfRangeException()
         };
 
 #if UNITY_EDITOR
         void OnValidate()
         {
-            // Update scene names
+            if (Levels == null) return;
+
             for (int i = 0; i < Levels.Count; i++)
             {
-                string sceneName = SceneName(Levels[i].Type);
-                if (string.IsNullOrEmpty(sceneName))
+                var spec = Levels[i];
+
+                var autoScene = SceneName(spec.Type);
+
+                // Non-unique types get auto-scene
+                if (!string.IsNullOrEmpty(autoScene))
                 {
-                    Debug.LogError($"SceneName for {Levels[i].Type} is empty.");
-                    continue;
+                    spec.SceneKey = autoScene;
+                }
+                else
+                {
+                    // Unique levels must set scene key manually
+                    if (string.IsNullOrWhiteSpace(spec.SceneKey))
+                        Debug.LogWarning($"Level {spec.LevelId} is Unique but SceneKey is empty. Please set it manually.");
                 }
 
-                // update scene name             
-                Levels[i] = new LevelSpec(
-                    Levels[i].LevelId,
-                    Levels[i].Type,
-                    sceneName,  // for unique levels must be manual,
-                    Levels[i].Difficulty,
-                    Levels[i].Seed
-                );
+                Levels[i] = spec;
 
-                // Verify name from build list
+                // Verify name from build list for non-unique auto scene keys
+                if (string.IsNullOrEmpty(autoScene))
+                    continue;
+
                 bool sceneFound = false;
                 var scenes = EditorBuildSettings.scenes;
                 for (int j = 0; j < scenes.Length; j++)
                 {
                     var scene = scenes[j];
                     string name = Path.GetFileNameWithoutExtension(scene.path);
-                    if (name == sceneName)
+                    if (name == autoScene)
                     {
                         sceneFound = true;
                         break;
@@ -76,10 +118,7 @@ namespace SWL.Content.Levels
                 }
 
                 if (!sceneFound)
-                {
-                    Debug.LogError($"Scene {sceneName} not found in build list.");
-                    continue;
-                }
+                    Debug.LogError($"Scene {autoScene} not found in build list.");
             }
         }
 #endif

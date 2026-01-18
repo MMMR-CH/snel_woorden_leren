@@ -2,8 +2,8 @@
     "name": "SWL.Presentation",
     "rootNamespace": "",
     "references": [
-        "GUID:679c36a5879796c46aab810ac32fdd7c",
-        "GUID:cebe6caff00053d49abd575071490ddb",
+        "SWL.App",
+        "SWL.Core",
         "GUID:6055be8ebefd69e48b49212b09b47b2f"
     ],
     "includePlatforms": [

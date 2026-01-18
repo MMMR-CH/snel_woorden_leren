@@ -33,6 +33,7 @@
   <Project Path="Unity.ResourceManager.csproj" />
   <Project Path="UnityEditor.TestRunner.csproj" />
   <Project Path="Unity.2D.SpriteShape.Runtime.csproj" />
+  <Project Path="SWL.Core.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" />
   <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.UnifiedRayTracing.Runtime.csproj" />
@@ -86,7 +87,6 @@
   <Project Path="Unity.Profiling.Core.csproj" />
   <Project Path="Unity.2D.Aseprite.Common.csproj" />
   <Project Path="Unity.RenderPipeline.Universal.ShaderLibrary.csproj" />
-  <Project Path="SWL.Core.csproj" />
   <Project Path="UniTask.Editor.csproj" />
   <Project Path="Unity.2D.PixelPerfect.csproj" />
   <Project Path="SWL.Composition.csproj" />

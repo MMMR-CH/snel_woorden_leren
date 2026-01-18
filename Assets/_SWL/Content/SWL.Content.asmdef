@@ -2,7 +2,7 @@
     "name": "SWL.Content",
     "rootNamespace": "",
     "references": [
-        "GUID:cebe6caff00053d49abd575071490ddb",
+        "SWL.Core",
         "GUID:575d9015d821c4d0181f251410b48ebf"
     ],
     "includePlatforms": [

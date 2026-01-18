@@ -14,7 +14,7 @@ namespace SWL.Presentation.Controllers
 
         private TickLifeRegenUseCase _tick;
         private ITimeService _time;
-        private float _acc;
+        private long _lastSecond = -1;
         private PlayerProfileStore _store;
 
         /// <summary>
@@ -33,20 +33,18 @@ namespace SWL.Presentation.Controllers
         
         private void Update()
         {
-            if (_tick == null || _time == null) return;
-            _acc += Time.unscaledDeltaTime;
+            if (_tick == null || _time == null || _store == null) return;
 
-            // not yet 1 second
-            if (_acc < 1f) return;
-
-            while (_acc >= 1f) _acc -= 1f;
             var now = _time.UtcNowUnixSeconds;
+            if (now == _lastSecond) return;
+            _lastSecond = now;
 
             // 1) state update
             _tick.Tick(now);
 
             // 2) timer UI update (remaining time)
-            UpdateTimerText(now);
+            if (hudView != null)
+                UpdateTimerText(now);
         }
 
         private void UpdateTimerText(long now)

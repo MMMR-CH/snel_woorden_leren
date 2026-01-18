@@ -2,12 +2,12 @@
     "name": "SWL.Composition",
     "rootNamespace": "",
     "references": [
-        "GUID:679c36a5879796c46aab810ac32fdd7c",
-        "GUID:cebe6caff00053d49abd575071490ddb",
-        "GUID:699261bbe8345f64fb479777c1339792",
-        "GUID:ff2eaee5293d62f48bd438099d1f3df7",
-        "GUID:7294e3e4386f5804ab6daf02591fcb0a",
-        "GUID:bd712a2eb9c80c0409031c445d17c201"
+        "SWL.App",
+        "SWL.Core",
+        "SWL.Presentation",
+        "SWL.Infrastructure",
+        "SWL.Features",
+        "SWL.Content"
     ],
     "includePlatforms": [
         "Android",

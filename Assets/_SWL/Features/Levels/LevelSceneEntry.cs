@@ -36,17 +36,22 @@ namespace SWL.Features.Levels
             var parent = runnerParent != null ? runnerParent : transform;
             _spawned = Instantiate(prefab, parent);
 
-            // pick a MonoBehaviour that implements ILevelRunner
-            runnerComponent = _spawned.GetComponent<MonoBehaviour>();
+            // Find the first MonoBehaviour that implements ILevelRunner
+            runnerComponent = null;
+            var all = _spawned.GetComponentsInChildren<MonoBehaviour>(true);
+            for (int i = 0; i < all.Length; i++)
+            {
+                if (all[i] is ILevelRunner)
+                {
+                    runnerComponent = all[i];
+                    break;
+                }
+            }
+
             if (Runner == null)
             {
-                // try to find any component in children
-                runnerComponent = _spawned.GetComponentInChildren<MonoBehaviour>();
-                if (Runner == null)
-                {
-                    Debug.LogError("Spawned prefab does not implement ILevelRunner.");
-                    return null;
-                }
+                Debug.LogError("Spawned prefab does not implement ILevelRunner.");
+                return null;
             }
 
             return Runner;

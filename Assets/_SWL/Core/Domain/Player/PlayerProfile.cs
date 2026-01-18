@@ -1,32 +1,48 @@
+using System;
 using System.Collections.Generic;
 
 namespace SWL.Core.Domain.Player
 {
     /// <summary>
-    /// Data Model / Persistence Model / POCO
-    /// No rules, no validation, no state change control.
-    /// Only the player's current photo is here.
-    /// Easily serialized, easy save-load, easy access, minimum dependency with frameworks
-    /// NO need to encapsulate. State does not change, use case can.
-    /// 
-    /// 
-    /// UI  --> can not reach profile directly
-    /// ↓
-    /// UseCase(ConsumeLife, GrantReward, TickLife)    --> applies the rules
-    /// ↓
-    /// PlayerProfileStore     --> only publishes events
-    /// ↓
-    /// PlayerProfile   --> only pure data with fields
-    ///  
+    /// Pure persistence model (POCO). No logic; rules are applied in UseCases.
     /// </summary>
-    [System.Serializable]
+    [Serializable]
     public sealed class PlayerProfile
     {
+        // Identity
+        public string PlayerId;
+
+        // HUD currencies + life
         public int Life;
         public int Coins;
-        public int Gems;        
+        public int Gems;
         public long NextLifeRegenUnix; // Unix timestamp (seconds)
-        public int CurrentLevelIndex;
+
+        // Progression
+        public int CurrentLevelIndex; // acts as "next main level id" for roadmap
         public HashSet<int> CompletedLevels = new();
+
+        // Words
+        public HashSet<string> UnlockedWordIds = new();
+        public HashSet<string> LearnedWordIds = new();
+
+        // Settings
+        public string LanguageCode = "EN";
+        public float MusicVolume = 1f;
+        public float SfxVolume = 1f;
+        public bool VibrationEnabled = true;
+
+        // Shop entitlements
+        public bool RemoveAdsOwned;
+        public bool VipOwned;
+
+        // Daily gift
+        public long DailyGiftLastClaimUnix;
+        public int DailyGiftStreakDays;
+
+        // Quests (skeleton)
+        public long QuestsLastResetUnix;
+        public Dictionary<string, int> QuestProgress = new();
+        public HashSet<string> ClaimedQuestIds = new();
     }
 }

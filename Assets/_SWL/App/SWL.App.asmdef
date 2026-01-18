@@ -2,7 +2,7 @@
     "name": "SWL.App",
     "rootNamespace": "",
     "references": [
-        "GUID:cebe6caff00053d49abd575071490ddb"
+        "SWL.Core"
     ],
     "includePlatforms": [
         "Android",

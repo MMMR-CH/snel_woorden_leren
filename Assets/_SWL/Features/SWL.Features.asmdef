@@ -2,8 +2,8 @@
     "name": "SWL.Features",
     "rootNamespace": "",
     "references": [
-        "GUID:cebe6caff00053d49abd575071490ddb",
-        "GUID:679c36a5879796c46aab810ac32fdd7c"
+        "SWL.Core",
+        "SWL.App"
     ],
     "includePlatforms": [
         "Android",
