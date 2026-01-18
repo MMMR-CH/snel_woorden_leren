@@ -6,14 +6,35 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/_SWL/Presentation/Scenes/LoadingScene.unity
+    path: Assets/Scenes/LoadingScene.unity
     guid: feb516a1637c3fe4abb2e6a22c637a86
   - enabled: 1
-    path: Assets/_SWL/Presentation/Scenes/OldMainMenu.unity
+    path: Assets/Scenes/OldMainMenu.unity
     guid: 33850402e3cdbf043a527284b39998c3
   - enabled: 1
-    path: Assets/_SWL/Presentation/Scenes/Fill_In_The_Blank.unity
+    path: Assets/Scenes/Fill_In_The_Blank.unity
     guid: 7e214a5c4dfedb94da825553dcdd6556
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/MainMenu.unity
+    guid: 436363aee44489a42b164a773f901159
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/Level_ChooseWordsImageText.unity
+    guid: c6ba202919a53054e9e316caa86c16a7
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/Level_Crossword.unity
+    guid: 56b9fb03d75fbb046867a191cec72520
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/Level_MatchWordsImages.unity
+    guid: d191972256d552649ad5e7a09b1d4f83
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/Level_MatchWordsSentences.unity
+    guid: fb097875cd627654dbfe9d294acad9be
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/Level_Unique_Test01.unity
+    guid: 5bc6027216f6cfe4dbb5c2355547a14c
+  - enabled: 1
+    path: Assets/_SWL/Presentation/Scenes/Level_FillInTheBlank.unity
+    guid: f2e67358a81e42d499d82c92354b2814
   m_configObjects:
     com.unity.adaptivePerformance.basic.provider_settings: {fileID: 11400000, guid: c496193b45ada67498122df67a9ac97a, type: 2}
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 65ded19ed9277af438dbc4ccbd4d261f, type: 2}

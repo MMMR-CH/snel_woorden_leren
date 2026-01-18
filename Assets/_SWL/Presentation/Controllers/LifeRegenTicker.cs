@@ -39,7 +39,7 @@ namespace SWL.Presentation.Controllers
             // not yet 1 second
             if (_acc < 1f) return;
 
-            while (_acc >= 1f) _acc -= Time.unscaledDeltaTime;
+            while (_acc >= 1f) _acc -= 1f;
             var now = _time.UtcNowUnixSeconds;
 
             // 1) state update
